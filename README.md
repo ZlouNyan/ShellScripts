@@ -1,2 +1,2 @@
 # ShellScripts
-Shell for nodes
+Shell for nodes for gear

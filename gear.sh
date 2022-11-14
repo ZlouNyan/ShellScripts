@@ -2,16 +2,16 @@
 # This is a comment
 sudo dnf update && sudo apt upgrade -y
 sudo dnf install -y git clang curl libssl-dev llvm libudev-dev
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-source ~/.cargo/env
-rustup default stable
-rustup update
-rustup update nightly
-rustup target add wasm32-unknown-unknown --toolchain nightly
-wget https://get.gear.rs/gear-nightly-linux-x86_64.tar.xz
+sudo curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+sudo source ~/.cargo/env
+sudo rustup default stable
+sudo rustup update
+sudo rustup update nightly
+sudo rustup target add wasm32-unknown-unknown --toolchain nightly
+sudo wget https://get.gear.rs/gear-nightly-linux-x86_64.tar.xz
 sudo tar -xvf gear-nightly-linux-x86_64.tar.xz -C /root
-rm gear-nightly-linux-x86_64.tar.xz
-cd /etc/systemd/system
+sudo rm gear-nightly-linux-x86_64.tar.xz
+sudo cd /etc/systemd/system
 echo "[Unit]
 Description=Gear Node
 After=network.target
@@ -26,7 +26,8 @@ RestartSec=3
 LimitNOFILE=10000
 
 [Install]
-WantedBy=multi-user.target" | tee -a gear-node.service
+WantedBy=multi-user.target" | sudo tee -a gear-node.service
+sudo cd /root
 sudo systemctl restart systemd-journald
 sudo systemctl daemon-reload
 sudo systemctl enable gear-node
