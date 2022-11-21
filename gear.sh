@@ -1,6 +1,6 @@
 #!/bin/bash
-sudo dnf update && sudo apt upgrade -y
-sudo dnf install -y git clang curl libssl-dev llvm libudev-dev
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y git clang curl libssl-dev llvm libudev-dev
 sudo curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 cd /root
 source /root/.cargo/env
@@ -20,7 +20,7 @@ After=network.target
 Type=simple
 User=root
 WorkingDirectory=/root/
-ExecStart=/root/gear --name 'ArtenNode' --telemetry-url 'ws://telemetry-backend-shard.gear-tech.io:32001/submit 0'
+ExecStart=/root/gear --name 'ArtemNode' --telemetry-url 'ws://telemetry-backend-shard.gear-tech.io:32001/submit 0'
 Restart=always
 RestartSec=3
 LimitNOFILE=10000
